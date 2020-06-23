@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="MyCanVas" width="669px" height="590px" style="border: 5px solid black;"></canvas>
+<script>
+    function RecTangLe(height,width) {
+        this.height = height;
+        this.width = width;
+
+        this.getArea = function () {
+            return height * width;
+        }
+
+        this.getPerimeter = function () {
+            return 2 * (height + width);
+        }
+
+    }
+
+    function createRecTangLe() {
+        let rtl = document.getElementById("MyCanVas").getContext("2d");
+        let width = Math.floor(Math.random() * 100);
+        let height = Math.floor(Math.random() * 90);
+        let x = Math.random() * window.innerWidth;
+        let y = Math.random() * window.innerHeight;
+        let rectangle = new RecTangLe(x,y,width,height);
+        let color = getRandomColor();
+        rtl.beginPath();
+        rtl.fillStyle = color;
+        rtl.fillRect(x,y,width,height);
+        rtl.fill();
+    }
+
+    function getRandomHex() {
+        return Math.floor(Math.random() * 225);
+    }
+
+    function getRandomColor() {
+        let red = getRandomHex();
+        let blue = getRandomHex();
+        let black = getRandomHex();
+        let yellow = getRandomHex();
+        let green = getRandomHex();
+
+        return "rgb(" + red + "," + blue + "," + black + "," + yellow + "," + green + ")";
+    }
+
+    let newRect = new RecTangLe(5,10);
+    function createMultipleRecTangLe() {
+        for (let i = 0; i < 34; i++) {
+            createRecTangLe();
+        }
+    }
+
+    createMultipleRecTangLe();
+    alert(" Area : " + newRect.getArea() + " - " + " Perimeter : " + newRect.getPerimeter());
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
